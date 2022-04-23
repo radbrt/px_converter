@@ -14,31 +14,6 @@ For people who like using R and the PxWebApiData library, it would be better to 
 This app converts the URL and JSON provided by Statistics Norway into an `ApiData` function call.
 """
 
-# def make_px_call(url, full_query):
-
-
-#     json_query = full_query["query"]
-#     all_dimensions = []
-
-#     for dimension in json_query:
-#         quoted_selection_values = [f'"{v}"' for v in dimension["selection"]["values"]]
-
-#         if quoted_selection_values:
-#             dimension_argument = f"{dimension['code']}=c({', '.join(quoted_selection_values)})"
-#         else:
-#             dimension_argument = f"{dimension['code']}=FALSE"
-
-#         all_dimensions.append(dimension_argument)
-
-#     all_dimensions_string = ", ".join(all_dimensions)
-
-#     px_call = f"""ApiData(\"{url}\", 
-#     {all_dimensions_string}, 
-#     defaultJSONquery=TRUE)"""
-
-#     return px_call
-
-
 url_input = st.text_input("The api endpoint URL")
 json_string_input = st.text_area("The API request JSON")
 
