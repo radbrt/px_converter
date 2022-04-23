@@ -12,32 +12,37 @@ This app converts the URL and JSON provided by Statistics Norway into an `ApiDat
 """
 
 
-url = st.text_input("The api endpoint URL")
-txt = st.text_area("The API request JSON")
+url_input = st.text_input("The api endpoint URL")
+json_string_input = st.text_area("The API request JSON")
 
-if url and txt:
-    d = json.loads(txt)
+if url_input and json_string_input:
+    full_json = json.loads(json_string_input)
 
-    l = d["query"]
-    ttot = []
+    json_query = full_json["query"]
+    all_dimensions = []
 
-    for k in l:
-        qstrings = [f'"{v}"' for v in k["selection"]["values"]]
-        sel = k["selection"]
+    for dimension in json_query:
+        quoted_selection_values = [f'"{v}"' for v in dimension["selection"]["values"]]
+        selection = dimension["selection"]
 
         joinstring = ",\n"
 
-        if sel.get('filter'):
-            totlist = f"{k['code']}=list('{sel.get('filter')}', c({joinstring.join(qstrings)}))"
+        if quoted_selection_values:
+            dimension_argument = f"{dimension['code']}=c({', '.join(quoted_selection_values)})"
         else:
-            totlist = f"{k['code']}=c({', '.join(qstrings)})"
+            dimension_argument = f"{dimension['code']}=FALSE"
+
+        # if selection.get('filter'):
+        #     dimension_argument = f"{dimension['code']}=list('{selection.get('filter')}', c({joinstring.join(quoted_selection_values)}))"
+        # else:
+        #     dimension_argument = f"{dimension['code']}=c({', '.join(quoted_selection_values)})"
         
-        ttot.append(totlist)
+        all_dimensions.append(dimension_argument)
 
-    totlist_tot = ", ".join(ttot)
+    all_dimensions_string = ", ".join(all_dimensions)
 
-    full = f"""ApiData(\"{url}\", 
-    {totlist_tot}, 
+    full = f"""ApiData(\"{url_input}\", 
+    {all_dimensions_string}, 
     defaultJSONquery=TRUE)"""
 
     st.code(full)
