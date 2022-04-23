@@ -61,8 +61,8 @@ def test_simple():
 
 
   expected_result = '''
-  ApiData("https://data.ssb.no/api/v0/no/table/11418/", 
-    MaaleMetode=c("01"), Yrke=c("1111", "1112"), AvtaltVanlig=c("5"), ContentsCode=c("Manedslonn"), Tid=c("2021"), 
+ApiData("https://data.ssb.no/api/v0/no/table/11418/", 
+    MaaleMetode=list('item', c("01")), Yrke=list('vs:NYK08Lonnansatt', c("1111", "1112")), AvtaltVanlig=list('item', c("5")), ContentsCode=list('item', c("Manedslonn")), Tid=list('item', c("2021")), 
     defaultJSONquery=TRUE)
   '''
   
