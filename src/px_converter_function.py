@@ -7,9 +7,10 @@ def make_px_call(url, full_query):
 
     for dimension in json_query:
         quoted_selection_values = [f'"{v}"' for v in dimension["selection"]["values"]]
-
+        filter = dimension["selection"]["filter"]
         if quoted_selection_values:
-            dimension_argument = f"{dimension['code']}=c({', '.join(quoted_selection_values)})"
+            
+            dimension_argument = f"{dimension['code']}=list('{filter}', c({', '.join(quoted_selection_values)}))"
         else:
             dimension_argument = f"{dimension['code']}=FALSE"
 

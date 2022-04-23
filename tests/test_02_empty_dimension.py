@@ -37,8 +37,8 @@ def test_empty_dimension():
   }
 
   expected_result = '''
-  ApiData("https://data.ssb.no/api/v0/no/table/11450/", 
-    Konsumgrp=FALSE, ContentsCode=c("KpiAar"), Tid=c("2016"), 
+ApiData("https://data.ssb.no/api/v0/no/table/11450/", 
+    Konsumgrp=FALSE, ContentsCode=list('item', c("KpiAar")), Tid=list('item', c("2016")), 
     defaultJSONquery=TRUE)
   '''
   
