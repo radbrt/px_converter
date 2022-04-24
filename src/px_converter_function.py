@@ -16,10 +16,12 @@ def make_px_call(url, full_query):
 
         all_dimensions.append(dimension_argument)
 
-    all_dimensions_string = ", ".join(all_dimensions)
+    all_dimensions_string = ", \n".join(all_dimensions)
 
-    px_call = f"""ApiData(\"{url}\", 
-    {all_dimensions_string}, 
-    defaultJSONquery=TRUE)"""
+    px_call = f"""
+ApiData(\"{url}\", 
+{all_dimensions_string}, 
+defaultJSONquery=TRUE)
+"""
 
     return px_call
