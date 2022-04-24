@@ -60,14 +60,18 @@ def test_simple():
   }
 
 
-  expected_result = '''
+  expected_result_str = '''
 ApiData("https://data.ssb.no/api/v0/no/table/11418/", 
-    MaaleMetode=list('item', c("01")), Yrke=list('vs:NYK08Lonnansatt', c("1111", "1112")), AvtaltVanlig=list('item', c("5")), ContentsCode=list('item', c("Manedslonn")), Tid=list('item', c("2021")), 
+    MaaleMetode=list('item', c("01")), 
+    Yrke=list('vs:NYK08Lonnansatt', c("1111", "1112")), 
+    AvtaltVanlig=list('item', c("5")), 
+    ContentsCode=list('item', c("Manedslonn")), 
+    Tid=list('item', c("2021")), 
     defaultJSONquery=TRUE)
   '''
   
-  call_result = make_px_call(url, query) 
+  call_result = [line.strip() for line in make_px_call(url, query).split('\n')]
+  expected_result = [line.strip() for line in expected_result_str.split('\n')]
 
-  assert call_result.strip() == expected_result.strip()
-
+  assert call_result == expected_result
 
