@@ -39,9 +39,8 @@ def test_empty_dimension():
   expected_result_str = '''
 ApiData("https://data.ssb.no/api/v0/no/table/11450/", 
     Konsumgrp=FALSE, 
-    ContentsCode=list('item', c("KpiAar")), 
-    Tid=list('item', c("2016")), 
-    defaultJSONquery=TRUE)
+ContentsCode=list('item', c("KpiAar")), 
+Tid=list('item', c("2016")))
   '''
   
   call_result = [line.strip() for line in make_px_call(url, query).split('\n')]
