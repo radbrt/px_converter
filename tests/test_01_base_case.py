@@ -1,4 +1,3 @@
-
 from  src.px_converter_function import make_px_call
 
 
@@ -63,11 +62,12 @@ def test_simple():
   expected_result_str = '''
 ApiData("https://data.ssb.no/api/v0/no/table/11418/", 
     MaaleMetode=list('item', c("01")), 
-    Yrke=list('vs:NYK08Lonnansatt', c("1111", "1112")), 
-    AvtaltVanlig=list('item', c("5")), 
-    ContentsCode=list('item', c("Manedslonn")), 
-    Tid=list('item', c("2021")), 
-    defaultJSONquery=TRUE)
+Yrke=list('vs:NYK08Lonnansatt', c("1111", "1112")), 
+AvtaltVanlig=list('item', c("5")), 
+ContentsCode=list('item', c("Manedslonn")), 
+Tid=list('item', c("2021")), 
+Sektor=FALSE, 
+Kjonn=FALSE)
   '''
   
   call_result = [line.strip() for line in make_px_call(url, query).split('\n')]
