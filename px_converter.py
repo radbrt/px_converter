@@ -7,11 +7,11 @@ from src.px_converter_function import make_px_call
 """
 # PxWebApiData call creator
 
-Statistics Norway (and likely Denmark and Sweden as well) make the json request for an API call available when you have created a table on the web portal - which is cool.
+Statistics Norway (and Finland and Sweden as well) make the json request for an API call available when you have created a table on the web portal - which is cool.
 
 For people who like using R and the PxWebApiData library, it would be better to get the actual API call - basically a differently formatted version of the JSON.
 
-This app converts the URL and JSON provided by Statistics Norway into an `ApiData` function call.
+This app converts the URL and JSON provided by Statistics Norway, or other PxWeb installations, into an `ApiData` function call.
 """
 
 url_input = st.text_input("The api endpoint URL")
